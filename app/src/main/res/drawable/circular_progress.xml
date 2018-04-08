@@ -29,10 +29,10 @@
             android:shape="oval"
             android:thickness="3.8sp">
             <gradient
-                android:startColor="#ff00ff"
-                android:centerColor="#00aaaa"
+                android:startColor="#f98aff"
+                android:centerColor="#81c6c6"
                 android:centerY="1.0"
-                android:endColor="#aaff00"
+                android:endColor="#d4ff7f"
                 android:angle="270"
                 />
         </shape>

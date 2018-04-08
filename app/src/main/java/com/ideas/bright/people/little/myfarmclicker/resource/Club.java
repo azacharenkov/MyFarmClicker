@@ -1,16 +1,18 @@
 package com.ideas.bright.people.little.myfarmclicker.resource;
 
+import com.ideas.bright.people.little.myfarmclicker.resource.upgrades.GameMultipliers;
+
 public class Club {
 
-    private int capacity = 100;
+    private GameMultipliers gameMultipliers;
     private int people = 0;
 
-    public int getCapacity() {
-        return capacity;
+    public Club(GameMultipliers gameMultipliers) {
+        this.gameMultipliers = gameMultipliers;
     }
 
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public int getCapacity() {
+        return gameMultipliers.getClubCapacity();
     }
 
     public int getPeople() {
@@ -21,8 +23,22 @@ public class Club {
         this.people = people;
     }
 
-    public void addPeople(int people)
+    public int addPeople(int people)
     {
-        this.people += people;
+        int spaceLeft = getCapacity() - this.people;
+        int peopleAdded = Math.min(people, spaceLeft);
+        this.people += peopleAdded;
+        return peopleAdded;
     }
+
+    public void autoAttend()
+    {
+        addPeople(gameMultipliers.getAutoAttendance()/20);
+    }
+
+    public double getMoney()
+    {
+        return getPeople() * (gameMultipliers.getPricePerCustomer()/120);
+    }
+
 }
